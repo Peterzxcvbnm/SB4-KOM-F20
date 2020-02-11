@@ -10,9 +10,12 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.enemy.EnemeyControlSystem;
+import dk.sdu.mmmi.cbse.enemy.EnemyPlugin;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,14 +46,28 @@ public class Game
                 new GameInputProcessor(gameData)
         );
 
-        IGamePluginService playerPlugin = new PlayerPlugin();
-        IEntityProcessingService playerProcess = new PlayerControlSystem();
-        entityPlugins.add(playerPlugin);
-        entityProcessors.add(playerProcess);
+        AddPlayer();
+        
+        AddEnemy();
+        
         // Lookup all Game Plugins using ServiceLoader
         for (IGamePluginService iGamePlugin : entityPlugins) {
             iGamePlugin.start(gameData, world);
         }
+    }
+
+    private void AddEnemy() {
+        IGamePluginService enemyPlugin = new EnemyPlugin();
+        IEntityProcessingService enemyProcess = new EnemeyControlSystem();
+        entityPlugins.add(enemyPlugin);
+        entityProcessors.add(enemyProcess);
+    }
+
+    private void AddPlayer() {
+        IGamePluginService playerPlugin = new PlayerPlugin();
+        IEntityProcessingService playerProcess = new PlayerControlSystem();
+        entityPlugins.add(playerPlugin);
+        entityProcessors.add(playerProcess);
     }
 
     @Override
@@ -79,7 +96,8 @@ public class Game
     private void draw() {
         for (Entity entity : world.getEntities()) {
 
-            sr.setColor(1, 1, 1, 1);
+            Color colour = entity.getColour();
+            sr.setColor(colour.getRed(), colour.getGreen(), colour.getBlue(), colour.getAlpha());
 
             sr.begin(ShapeRenderer.ShapeType.Line);
 
