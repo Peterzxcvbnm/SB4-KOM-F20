@@ -40,25 +40,22 @@ public class AsteroidPlugin implements IGamePluginService {
         float rotationSpeed = 5;
         float x = gameData.getDisplayWidth() / 4;
         float y = gameData.getDisplayHeight() / 4;
-        float radians = 3.1415f / 2;
+        float radians = random.nextFloat() * (float) Math.PI * 2;
 
-        Entity asteroid = new Asteroid();
+        Asteroid asteroid = new Asteroid();
+        asteroid.size = 8;
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroid.add(new PositionPart(x, y, radians));
         asteroid.setColour(200, 200, 200, 1);
 
         return asteroid;
     }
-    
+
     protected static Entity createAsteroid(GameData gameData, SpawnAsteroidEvent event) {
         Asteroid source = (Asteroid) event.getSource();
         PositionPart sourcePositionPart = null;
-        try {
-            sourcePositionPart = source.getPart(Class.forName("PositionPart"));
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Could not find class: PositionPart");
-            ex.printStackTrace();
-        }
+        sourcePositionPart = source.getPart(PositionPart.class);
+
         float deacceleration = 10;
         float acceleration = 1000;
         float maxSpeed = 100;

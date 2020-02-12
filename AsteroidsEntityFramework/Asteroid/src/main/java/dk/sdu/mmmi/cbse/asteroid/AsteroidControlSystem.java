@@ -28,12 +28,12 @@ public class AsteroidControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         ProcessExistingAsteroids(world, gameData);
-        
-        if(random.nextInt(100) < 1){
+
+        if (random.nextInt(100) < 1) {
             Entity asteroid = AsteroidPlugin.createAsteroid(gameData);
             world.addEntity(asteroid);
         }
-        
+
         ProcessSpawnAsteroidEvent(gameData, world);
     }
 
@@ -42,45 +42,53 @@ public class AsteroidControlSystem implements IEntityProcessingService {
             PositionPart positionPart = asteroid.getPart(PositionPart.class);
             MovingPart movingPart = asteroid.getPart(MovingPart.class);
 
+            movingPart.setUp(true);
+            
             movingPart.process(gameData, asteroid);
             positionPart.process(gameData, asteroid);
 
-            updateShape(asteroid);
+            updateShape((Asteroid) asteroid);
         }
     }
 
     private void ProcessSpawnAsteroidEvent(GameData gameData, World world) {
-        try {
-            for (Event event : gameData.getEvents((Class<SpawnAsteroidEvent>) Class.forName("SpawnAsteroidEvent"))) {
-                Entity asteroid = AsteroidPlugin.createAsteroid(gameData);
-                world.addEntity(asteroid);
-                gameData.removeEvent(event);
-            }
-        } catch (ClassNotFoundException e) {
-            System.out.println("Could not find SpawnAsteroidEvent");
-            e.printStackTrace();
+        for (Event event : gameData.getEvents(SpawnAsteroidEvent.class)) {
+            Entity asteroid = AsteroidPlugin.createAsteroid(gameData);
+            world.addEntity(asteroid);
+            gameData.removeEvent(event);
         }
     }
 
-    private void updateShape(Entity entity) {
+    private void updateShape(Asteroid entity) {
         float[] shapex = entity.getShapeX();
         float[] shapey = entity.getShapeY();
         PositionPart positionPart = entity.getPart(PositionPart.class);
         float x = positionPart.getX();
         float y = positionPart.getY();
-        float radians = positionPart.getRadians();
 
-        shapex[0] = (float) (x + Math.cos(radians) * 8);
-        shapey[0] = (float) (y + Math.sin(radians) * 8);
+        shapex[0] = (float) (x);
+        shapey[0] = (float) (y - (3 + entity.shapeMultipliers[0]) * entity.size);
 
-        shapex[1] = (float) (x + Math.cos(radians - 4 * 3.1415f / 5) * 8);
-        shapey[1] = (float) (y + Math.sin(radians - 4 * 3.1145f / 5) * 8);
+        shapex[1] = (float) (x + Math.cos(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
+        shapey[1] = (float) (y - Math.sin(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
 
-        shapex[2] = (float) (x + Math.cos(radians + 3.1415f) * 5);
-        shapey[2] = (float) (y + Math.sin(radians + 3.1415f) * 5);
+        shapex[2] = (float) (x + (3 + entity.shapeMultipliers[0]) * entity.size);
+        shapey[2] = (float) (y);
 
-        shapex[3] = (float) (x + Math.cos(radians + 4 * 3.1415f / 5) * 8);
-        shapey[3] = (float) (y + Math.sin(radians + 4 * 3.1415f / 5) * 8);
+        shapex[3] = (float) (x + Math.cos(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
+        shapey[3] = (float) (y + Math.sin(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
+
+        shapex[4] = (float) (x);
+        shapey[4] = (float) (y + (3 + entity.shapeMultipliers[0]) * entity.size);
+
+        shapex[5] = (float) (x - Math.cos(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
+        shapey[5] = (float) (y + Math.sin(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
+
+        shapex[6] = (float) (x - (3 + entity.shapeMultipliers[0]) * entity.size);
+        shapey[6] = (float) (y);
+
+        shapex[7] = (float) (x - Math.cos(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
+        shapey[7] = (float) (y - Math.sin(3.1415f / 4) * (3 + entity.shapeMultipliers[0]) * entity.size);
 
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
