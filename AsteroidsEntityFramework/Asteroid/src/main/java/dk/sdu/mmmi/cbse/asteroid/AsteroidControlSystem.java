@@ -7,10 +7,12 @@ package dk.sdu.mmmi.cbse.asteroid;
 
 import dk.sdu.mmmi.cbse.common.data.DirectionEnum;
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityTypes;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.events.EntityHitEvent;
 import dk.sdu.mmmi.cbse.common.events.Event;
 import dk.sdu.mmmi.cbse.common.events.SpawnAsteroidEvent;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
@@ -29,8 +31,14 @@ public class AsteroidControlSystem implements IEntityProcessingService {
 
         ProcessExistingAsteroids(world, gameData);
 
-        //RandomlySpawnAsteroid(gameData, world);
+        for (Event event : gameData.getEvents(EntityHitEvent.class)) {
+            if (event.getSource().type == EntityTypes.ASTEROID) {
+                gameData.addEvent(new SpawnAsteroidEvent(event.getSource()));
+                gameData.removeEvent(event);
+            }
+        }
 
+        //RandomlySpawnAsteroid(gameData, world);
         ProcessSpawnAsteroidEvent(gameData, world);
     }
 
@@ -47,7 +55,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
             MovingPart movingPart = asteroid.getPart(MovingPart.class);
 
             movingPart.setUp(true);
-            
+
             movingPart.process(gameData, asteroid);
             positionPart.process(gameData, asteroid);
 
@@ -69,7 +77,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         PositionPart positionPart = entity.getPart(PositionPart.class);
         float x = positionPart.getX();
         float y = positionPart.getY();
-        
+
         int baseSize = 2;
 
         shapex[0] = (float) (x);

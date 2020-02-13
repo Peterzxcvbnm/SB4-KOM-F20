@@ -13,8 +13,8 @@ import java.util.Random;
  * @author Peterzxcvbnm
  */
 public class Asteroid extends Entity {
-    
-    public int size = 1;
+
+    public int size;
     public float[] shapeMultipliers = new float[8];
     private Random random = new Random();
     

@@ -34,9 +34,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             movingPart.setRight(gameData.getKeys().isDown(RIGHT));
             movingPart.setUp(gameData.getKeys().isDown(UP));
             
-            System.out.println("SpaceDown?" + gameData.getKeys().isDown(SPACE) + " weaponPart?" + weaponPart.isOffCooldown());
-            if(gameData.getKeys().isDown(SPACE) && weaponPart.isOffCooldown()){
-                System.out.println("Shooting");
+           if(gameData.getKeys().isDown(SPACE) && weaponPart.isOffCooldown()){
                 gameData.addEvent(new ShootBulletEvent(player));
                 weaponPart.Shoot();
             }

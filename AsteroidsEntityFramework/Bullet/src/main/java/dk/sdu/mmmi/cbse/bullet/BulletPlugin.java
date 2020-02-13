@@ -6,6 +6,7 @@
 package dk.sdu.mmmi.cbse.bullet;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityTypes;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
@@ -38,6 +39,8 @@ public class BulletPlugin implements IGamePluginService{
         
 
         Entity bullet = new Bullet();
+        bullet.type = EntityTypes.BULLET;
+        bullet.setRadius(1);
         bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         bullet.add(new PositionPart(x, y, radians));
         bullet.add(new LifePart(1, 2));

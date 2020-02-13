@@ -6,6 +6,7 @@
 package dk.sdu.mmmi.cbse.enemy;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityTypes;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
@@ -37,6 +38,7 @@ public class EnemyPlugin implements IGamePluginService{
         float radians = 3.1415f / 2;
         
         Entity enemyShip = new Enemy();
+        enemyShip.type = EntityTypes.ENEMY;
         enemyShip.setRadius(8);
         enemyShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         enemyShip.add(new PositionPart(x, y, radians));

@@ -6,6 +6,7 @@
 package dk.sdu.mmmi.cbse.asteroid;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityTypes;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
@@ -22,40 +23,42 @@ import java.util.logging.Logger;
  * @author Peterzxcvbnm
  */
 public class AsteroidPlugin implements IGamePluginService {
-
+    
     private ArrayList<Entity> asteroids = new ArrayList<>();
     private static Random random = new Random();
-
+    
     @Override
     public void start(GameData gameData, World world) {
         Entity asteroid = createAsteroid(gameData);
         asteroids.add(asteroid);
         world.addEntity(asteroid);
     }
-
+    
     protected static Entity createAsteroid(GameData gameData) {
         float deacceleration = 10;
         float acceleration = 1000;
         float maxSpeed = 100;
         float rotationSpeed = 5;
-        float x = gameData.getDisplayWidth() / 4;
-        float y = gameData.getDisplayHeight() / 4;
+        float x = gameData.getDisplayWidth() * 3 / 4;
+        float y = gameData.getDisplayHeight() * 3 / 4;
         float radians = random.nextFloat() * (float) Math.PI * 2;
-
+        
         Asteroid asteroid = new Asteroid();
+        asteroid.type = EntityTypes.ASTEROID;
         asteroid.size = 8;
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroid.add(new PositionPart(x, y, radians));
         asteroid.setColour(0.8f, 0.8f, 0.8f, 1);
-
+        asteroid.setRadius(10);
+        
         return asteroid;
     }
-
+    
     protected static Entity createAsteroid(GameData gameData, SpawnAsteroidEvent event) {
         Asteroid source = (Asteroid) event.getSource();
         PositionPart sourcePositionPart = null;
         sourcePositionPart = source.getPart(PositionPart.class);
-
+        
         float deacceleration = 10;
         float acceleration = 1000;
         float maxSpeed = 100;
@@ -63,20 +66,23 @@ public class AsteroidPlugin implements IGamePluginService {
         float x = sourcePositionPart.getX();
         float y = sourcePositionPart.getY();
         float radians = sourcePositionPart.getRadians() + random.nextFloat() * 2 * (float) Math.PI;
-
-        Entity asteroid = new Asteroid();
+        
+        Asteroid asteroid = new Asteroid();
+        asteroid.type = EntityTypes.ASTEROID;
+        asteroid.size = source.size / 2;
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroid.add(new PositionPart(x, y, radians));
         asteroid.setColour(0.8f, 0.8f, 0.8f, 1);
-
+        asteroid.setRadius(2 + asteroid.size);
+        
         return asteroid;
     }
-
+    
     @Override
     public void stop(GameData gameData, World world) {
         for (Entity asteroid : asteroids) {
             world.removeEntity(asteroid);
         }
     }
-
+    
 }
