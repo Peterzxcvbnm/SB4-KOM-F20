@@ -2,11 +2,14 @@ package dk.sdu.mmmi.cbse.main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dk.sdu.mmmi.cbse.asteroid.AsteroidControlSystem;
 import dk.sdu.mmmi.cbse.asteroid.AsteroidPlugin;
+import dk.sdu.mmmi.cbse.bullet.BulletControlSystem;
+import dk.sdu.mmmi.cbse.bullet.BulletPlugin;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -17,7 +20,6 @@ import dk.sdu.mmmi.cbse.enemy.EnemyPlugin;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,10 +56,19 @@ public class Game
         
         AddAsteroid();
         
+        AddBullet();
+        
         // Lookup all Game Plugins using ServiceLoader
         for (IGamePluginService iGamePlugin : entityPlugins) {
             iGamePlugin.start(gameData, world);
         }
+    }
+    
+    private void AddBullet(){
+        IGamePluginService bulletPlugin = new BulletPlugin();
+        IEntityProcessingService bulletProcess = new BulletControlSystem();
+        entityPlugins.add(bulletPlugin);
+        entityProcessors.add(bulletProcess);
     }
 
     private void AddEnemy() {
@@ -108,7 +119,7 @@ public class Game
         for (Entity entity : world.getEntities()) {
 
             Color colour = entity.getColour();
-            sr.setColor(colour.getRed(), colour.getGreen(), colour.getBlue(), colour.getAlpha());
+            sr.setColor(colour);
 
             sr.begin(ShapeRenderer.ShapeType.Line);
 

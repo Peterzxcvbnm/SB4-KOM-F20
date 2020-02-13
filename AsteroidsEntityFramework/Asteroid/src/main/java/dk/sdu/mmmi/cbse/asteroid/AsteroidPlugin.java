@@ -46,7 +46,7 @@ public class AsteroidPlugin implements IGamePluginService {
         asteroid.size = 8;
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroid.add(new PositionPart(x, y, radians));
-        asteroid.setColour(200, 200, 200, 1);
+        asteroid.setColour(0.8f, 0.8f, 0.8f, 1);
 
         return asteroid;
     }
@@ -67,7 +67,7 @@ public class AsteroidPlugin implements IGamePluginService {
         Entity asteroid = new Asteroid();
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroid.add(new PositionPart(x, y, radians));
-        asteroid.setColour(200, 200, 200, 1);
+        asteroid.setColour(0.8f, 0.8f, 0.8f, 1);
 
         return asteroid;
     }

@@ -14,6 +14,7 @@ import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.events.ShootBulletEvent;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import java.util.Random;
 
@@ -60,6 +61,10 @@ public class EnemeyControlSystem implements IEntityProcessingService {
             
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);
+            
+            if(random.nextInt(100) < 5){
+                gameData.addEvent(new ShootBulletEvent(enemy));
+            }
 
             updateShape(enemy);
         }

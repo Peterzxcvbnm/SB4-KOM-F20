@@ -21,8 +21,8 @@ public class Asteroid extends Entity {
     public Asteroid(){
         super.setShapeX(new float[8]);
         super.setShapeY(new float[8]);
-        for(float no: shapeMultipliers){
-            no = random.nextFloat() * 2;
+        for(int i = 0; i < shapeMultipliers.length; i++){
+            shapeMultipliers[i] = random.nextFloat() * 3;
         }
     }
     
