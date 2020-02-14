@@ -7,9 +7,12 @@ import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.SPACE;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.WeaponPart;
+import dk.sdu.mmmi.cbse.common.events.EntityHitEvent;
+import dk.sdu.mmmi.cbse.common.events.Event;
 import dk.sdu.mmmi.cbse.common.events.ShootBulletEvent;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import static java.lang.Math.cos;
@@ -29,6 +32,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             PositionPart positionPart = player.getPart(PositionPart.class);
             MovingPart movingPart = player.getPart(MovingPart.class);
             WeaponPart weaponPart = player.getPart(WeaponPart.class);
+            LifePart lifePart = player.getPart(LifePart.class);
 
             movingPart.setLeft(gameData.getKeys().isDown(LEFT));
             movingPart.setRight(gameData.getKeys().isDown(RIGHT));
@@ -38,10 +42,20 @@ public class PlayerControlSystem implements IEntityProcessingService {
                 gameData.addEvent(new ShootBulletEvent(player));
                 weaponPart.Shoot();
             }
+           
+           for(Event event: gameData.getEvents(EntityHitEvent.class, player.getID())){
+               gameData.removeEvent(event);
+               lifePart.setIsHit(true);
+           }
             
             movingPart.process(gameData, player);
             positionPart.process(gameData, player);
             weaponPart.process(gameData, player);
+            lifePart.process(gameData, player);
+            
+            if(lifePart.getLife() <= 0){
+                world.removeEntity(player);
+            }
 
             updateShape(player);
         }

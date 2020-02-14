@@ -34,8 +34,8 @@ public class BulletPlugin implements IGamePluginService{
         float maxSpeed = 400;
         float rotationSpeed = 5;
         float radians = sourcePositionPart.getRadians();
-        float x = sourcePositionPart.getX() + (float) Math.cos(radians) * (source.getRadius() + 1);
-        float y = sourcePositionPart.getY() + (float) Math.sin(radians) * (source.getRadius() + 1);
+        float x = sourcePositionPart.getX() + (float) Math.cos(radians) * (source.getRadius() + 4);
+        float y = sourcePositionPart.getY() + (float) Math.sin(radians) * (source.getRadius() + 4);
         
 
         Entity bullet = new Bullet();

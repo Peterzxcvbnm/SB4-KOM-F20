@@ -6,12 +6,13 @@
 package dk.sdu.mmmi.cbse.bullet;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityTypes;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
-import dk.sdu.mmmi.cbse.common.events.BulletExpiredEvent;
+import dk.sdu.mmmi.cbse.common.events.EntityHitEvent;
 import dk.sdu.mmmi.cbse.common.events.Event;
 import dk.sdu.mmmi.cbse.common.events.ShootBulletEvent;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
@@ -24,15 +25,19 @@ public class BulletControlSystem implements IEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
+        LowerLifeOfCollidedBullets(gameData);
         ProcessExistingBullets(world, gameData);
         SpawnNewBullets(gameData, world);
-        CleanUpExpiredBullets(gameData, world);
+        
     }
 
-    private void CleanUpExpiredBullets(GameData gameData, World world) {
-        for(Event event: gameData.getEvents(BulletExpiredEvent.class)){
-            world.removeEntity(event.getSource());
-            gameData.removeEvent(event);
+    private void LowerLifeOfCollidedBullets(GameData gameData) {
+        for(Event event: gameData.getEvents(EntityHitEvent.class)){
+            Entity bullet = event.getSource();
+            if(bullet.type == EntityTypes.BULLET){
+                LifePart life = bullet.getPart(LifePart.class);
+                life.setIsHit(true);
+            }
         }
     }
 
@@ -57,7 +62,11 @@ public class BulletControlSystem implements IEntityProcessingService {
             lifePart.process(gameData, bullet);
             
             if(lifePart.getExpiration() < 0){
-                gameData.addEvent(new BulletExpiredEvent(bullet));
+                world.removeEntity(bullet);
+            }
+            
+            if(lifePart.getLife() <= 0){
+                world.removeEntity(bullet);
             }
 
             updateShape(bullet);

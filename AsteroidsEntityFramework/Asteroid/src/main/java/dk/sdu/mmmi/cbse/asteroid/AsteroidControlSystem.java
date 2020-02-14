@@ -32,18 +32,22 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         ProcessExistingAsteroids(world, gameData);
 
         for (Event event : gameData.getEvents(EntityHitEvent.class)) {
-            if (event.getSource().type == EntityTypes.ASTEROID) {
-                gameData.addEvent(new SpawnAsteroidEvent(event.getSource()));
+            Entity sourceAsteroid = event.getSource();
+            if (sourceAsteroid.type == EntityTypes.ASTEROID) {
+                world.removeEntity(sourceAsteroid);
+                if (((Asteroid) sourceAsteroid).size > 2) {
+                    gameData.addEvent(new SpawnAsteroidEvent(event.getSource()));
+                }
                 gameData.removeEvent(event);
             }
         }
 
-        //RandomlySpawnAsteroid(gameData, world);
+        RandomlySpawnAsteroid(gameData, world);
         ProcessSpawnAsteroidEvent(gameData, world);
     }
 
     private void RandomlySpawnAsteroid(GameData gameData, World world) {
-        if (random.nextInt(100) < 1) {
+        if (random.nextInt(1000) < 1) {
             Entity asteroid = AsteroidPlugin.createAsteroid(gameData);
             world.addEntity(asteroid);
         }
@@ -67,6 +71,8 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         for (Event event : gameData.getEvents(SpawnAsteroidEvent.class)) {
             Entity asteroid = AsteroidPlugin.createAsteroid(gameData, (SpawnAsteroidEvent) event);
             world.addEntity(asteroid);
+            Entity asteroid1 = AsteroidPlugin.createAsteroid(gameData, (SpawnAsteroidEvent) event);
+            world.addEntity(asteroid1);
             gameData.removeEvent(event);
         }
     }

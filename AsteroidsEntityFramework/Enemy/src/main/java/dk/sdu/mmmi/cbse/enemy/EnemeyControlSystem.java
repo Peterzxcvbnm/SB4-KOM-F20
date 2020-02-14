@@ -12,8 +12,11 @@ import static dk.sdu.mmmi.cbse.common.data.GameKeys.LEFT;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.events.EntityHitEvent;
+import dk.sdu.mmmi.cbse.common.events.Event;
 import dk.sdu.mmmi.cbse.common.events.ShootBulletEvent;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import java.util.Random;
@@ -34,6 +37,7 @@ public class EnemeyControlSystem implements IEntityProcessingService {
         for (Entity enemy : world.getEntities(Enemy.class)) {
             PositionPart positionPart = enemy.getPart(PositionPart.class);
             MovingPart movingPart = enemy.getPart(MovingPart.class);
+            LifePart lifePart = enemy.getPart(LifePart.class);
 
             if(timeToChangeDirection == 0){
                 UpdateDirection();
@@ -59,11 +63,21 @@ public class EnemeyControlSystem implements IEntityProcessingService {
                     break;
             }
             
+            for(Event event: gameData.getEvents(EntityHitEvent.class, enemy.getID())){
+               gameData.removeEvent(event);
+               lifePart.setIsHit(true);
+           }
+            
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);
+            lifePart.process(gameData, enemy);
             
             if(random.nextInt(100) < 5){
                 gameData.addEvent(new ShootBulletEvent(enemy));
+            }
+            
+            if(lifePart.getLife() <= 0){
+                world.removeEntity(enemy);
             }
 
             updateShape(enemy);
