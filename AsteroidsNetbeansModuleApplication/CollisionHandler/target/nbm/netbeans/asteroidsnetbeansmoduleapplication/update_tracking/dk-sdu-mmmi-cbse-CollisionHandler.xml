@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="dk.sdu.mmmi.cbse.CollisionHandler">
+    <module_version install_time="1582809895419" last="true" origin="installer" specification_version="1.0">
+        <file crc="2050755359" name="config/Modules/dk-sdu-mmmi-cbse-CollisionHandler.xml"/>
+        <file crc="3766597630" name="modules/dk-sdu-mmmi-cbse-CollisionHandler.jar"/>
+        <file crc="706379928" name="update_tracking/dk-sdu-mmmi-cbse-CollisionHandler.xml"/>
+    </module_version>
+</module>

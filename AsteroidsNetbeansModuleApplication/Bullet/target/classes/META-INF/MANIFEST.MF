@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Localizing-Bundle: dk/sdu/mmmi/cbse/bullet/Bundle.prope
+ rties
+OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Implementation-Version: 1.0-20200227
+OpenIDE-Module-Build-Version: 202002271324
+OpenIDE-Module: dk.sdu.mmmi.cbse.Bullet
+OpenIDE-Module-Public-Packages: dk.sdu.cbse.helloworld.*
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: dk.sdu.mmmi.cbse
+OpenIDE-Module-Name: Bullet
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+X-Class-Path: ext/dk.sdu.mmmi.cbse.Bullet/com-badlogicgames-gdx/gdx-ba
+ ckend-lwjgl.jar ext/dk.sdu.mmmi.cbse.Bullet/com-badlogicgames-gdx/gdx
+ .jar ext/dk.sdu.mmmi.cbse.Bullet/org-lwjgl-lwjgl/lwjgl.jar ext/dk.sdu
+ .mmmi.cbse.Bullet/org-lwjgl-lwjgl/lwjgl-platform-natives-windows.jar 
+ ext/dk.sdu.mmmi.cbse.Bullet/org-lwjgl-lwjgl/lwjgl-platform-natives-li
+ nux.jar ext/dk.sdu.mmmi.cbse.Bullet/org-lwjgl-lwjgl/lwjgl-platform-na
+ tives-osx.jar ext/dk.sdu.mmmi.cbse.Bullet/net-java-jinput/jinput.jar 
+ ext/dk.sdu.mmmi.cbse.Bullet/net-java-jutils/jutils.jar ext/dk.sdu.mmm
+ i.cbse.Bullet/org-lwjgl-lwjgl/lwjgl_util.jar ext/dk.sdu.mmmi.cbse.Bul
+ let/com-badlogicgames-jlayer/jlayer.jar ext/dk.sdu.mmmi.cbse.Bullet/o
+ rg-jcraft/jorbis.jar
+Maven-Class-Path: com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.10 com.b
+ adlogicgames.gdx:gdx:1.9.10 org.lwjgl.lwjgl:lwjgl:2.9.3 org.lwjgl.lwj
+ gl:lwjgl-platform:2.9.3:natives-windows org.lwjgl.lwjgl:lwjgl-platfor
+ m:2.9.3:natives-linux org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-os
+ x net.java.jinput:jinput:2.0.5 net.java.jutils:jutils:1.0.0 org.lwjgl
+ .lwjgl:lwjgl_util:2.9.3 com.badlogicgames.jlayer:jlayer:1.0.1-gdx org
+ .jcraft:jorbis:0.0.17
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.31.1, org.openide.util.lookup > 8.37.1, dk.sdu.mmmi.cbse.Comm
+ on > 1.0
+

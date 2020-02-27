@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Localizing-Bundle: dk/sdu/mmmi/cbse/enemy/Bundle.proper
+ ties
+OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Implementation-Version: 1.0-20200227
+OpenIDE-Module-Build-Version: 202002271324
+OpenIDE-Module: dk.sdu.mmmi.cbse.Enemy
+OpenIDE-Module-Public-Packages: dk.sdu.cbse.helloworld.*
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: dk.sdu.mmmi.cbse
+OpenIDE-Module-Name: Enemy
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+X-Class-Path: ext/dk.sdu.mmmi.cbse.Enemy/com-badlogicgames-gdx/gdx-bac
+ kend-lwjgl.jar ext/dk.sdu.mmmi.cbse.Enemy/com-badlogicgames-gdx/gdx.j
+ ar ext/dk.sdu.mmmi.cbse.Enemy/org-lwjgl-lwjgl/lwjgl.jar ext/dk.sdu.mm
+ mi.cbse.Enemy/org-lwjgl-lwjgl/lwjgl-platform-natives-windows.jar ext/
+ dk.sdu.mmmi.cbse.Enemy/org-lwjgl-lwjgl/lwjgl-platform-natives-linux.j
+ ar ext/dk.sdu.mmmi.cbse.Enemy/org-lwjgl-lwjgl/lwjgl-platform-natives-
+ osx.jar ext/dk.sdu.mmmi.cbse.Enemy/net-java-jinput/jinput.jar ext/dk.
+ sdu.mmmi.cbse.Enemy/net-java-jutils/jutils.jar ext/dk.sdu.mmmi.cbse.E
+ nemy/org-lwjgl-lwjgl/lwjgl_util.jar ext/dk.sdu.mmmi.cbse.Enemy/com-ba
+ dlogicgames-jlayer/jlayer.jar ext/dk.sdu.mmmi.cbse.Enemy/org-jcraft/j
+ orbis.jar
+Maven-Class-Path: com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.10 com.b
+ adlogicgames.gdx:gdx:1.9.10 org.lwjgl.lwjgl:lwjgl:2.9.3 org.lwjgl.lwj
+ gl:lwjgl-platform:2.9.3:natives-windows org.lwjgl.lwjgl:lwjgl-platfor
+ m:2.9.3:natives-linux org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-os
+ x net.java.jinput:jinput:2.0.5 net.java.jutils:jutils:1.0.0 org.lwjgl
+ .lwjgl:lwjgl_util:2.9.3 com.badlogicgames.jlayer:jlayer:1.0.1-gdx org
+ .jcraft:jorbis:0.0.17
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.31.1, org.openide.util.lookup > 8.37.1, dk.sdu.mmmi.cbse.Comm
+ on > 1.0
+
