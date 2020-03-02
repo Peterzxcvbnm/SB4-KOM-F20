@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColourPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
@@ -83,8 +84,8 @@ public class Game
     private void draw() {
         for (Entity entity : world.getEntities()) {
 
-            Color colour = entity.getColour();
-            sr.setColor(colour);
+            ColourPart colourPart = entity.getPart(ColourPart.class);
+            sr.setColor(new Color(colourPart.red, colourPart.green, colourPart.blue, colourPart.alpha));
 
             sr.begin(ShapeRenderer.ShapeType.Line);
 

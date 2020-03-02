@@ -9,6 +9,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.EntityTypes;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColourPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.events.SpawnAsteroidEvent;
@@ -70,7 +71,7 @@ public class AsteroidPlugin implements IGamePluginService {
         asteroid.size = 8;
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroid.add(new PositionPart(x, y, radians));
-        asteroid.setColour(0.8f, 0.8f, 0.8f, 1);
+        asteroid.add(new ColourPart(0.8f, 0.8f, 0.8f, 1));
         asteroid.setRadius(10);
 
         return asteroid;
@@ -94,7 +95,7 @@ public class AsteroidPlugin implements IGamePluginService {
         asteroid.size = source.size / 2;
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroid.add(new PositionPart(x, y, radians));
-        asteroid.setColour(0.8f, 0.8f, 0.8f, 1);
+        asteroid.add(new ColourPart(0.8f, 0.8f, 0.8f, 1));;
         asteroid.setRadius(2 + asteroid.size);
 
         return asteroid;

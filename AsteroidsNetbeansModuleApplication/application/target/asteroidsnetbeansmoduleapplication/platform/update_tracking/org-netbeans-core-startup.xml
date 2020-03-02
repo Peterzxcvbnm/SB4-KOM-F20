@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.core.startup/1">
-    <module_version install_time="1582809237082" last="true" origin="installer" specification_version="1.66.1.1">
+    <module_version install_time="1583141405908" last="true" origin="installer" specification_version="1.66.1.1">
         <file crc="668499386" name="config/ModuleAutoDeps/org-netbeans-core-startup.xml"/>
         <file crc="4061122664" name="core/core.jar"/>
     </module_version>

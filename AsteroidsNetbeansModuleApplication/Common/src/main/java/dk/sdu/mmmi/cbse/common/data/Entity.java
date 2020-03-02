@@ -1,7 +1,6 @@
 package dk.sdu.mmmi.cbse.common.data;
 
 import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
-import com.badlogic.gdx.graphics.Color;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.UUID;
@@ -14,7 +13,6 @@ public class Entity implements Serializable {
     private float[] shapeX = new float[4];
     private float[] shapeY = new float[4];
     private float radius;
-    private Color colour = new Color(1, 1, 1, 1);
     private Map<Class, EntityPart> parts;
     
     public Entity() {
@@ -59,13 +57,5 @@ public class Entity implements Serializable {
 
     public void setShapeY(float[] shapeY) {
         this.shapeY = shapeY;
-    }
-    
-    public Color getColour(){
-        return colour;
-    }
-    
-    public void setColour(float r, float g, float b, float a){
-        colour = new Color(r, g, b, a);
     }
 }

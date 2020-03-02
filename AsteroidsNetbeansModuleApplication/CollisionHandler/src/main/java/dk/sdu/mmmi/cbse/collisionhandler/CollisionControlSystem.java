@@ -27,7 +27,7 @@ public class CollisionControlSystem implements IPostEntityProcessingService {
             for (Entity entity2 : world.getEntities()) {
                 if (HasCollided(entity1, entity2)) {
                     if (entity1.type != entity2.type) {
-                        System.out.println(entity1.type + " has collided with " + entity2.type);
+                        //System.out.println(entity1.type + " has collided with " + entity2.type);
                         gameData.addEvent(new EntityHitEvent(entity1));
                         gameData.addEvent(new EntityHitEvent(entity2));
                     }

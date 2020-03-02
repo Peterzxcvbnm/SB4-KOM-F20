@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="dk.sdu.mmmi.cbse.Common">
-    <module_version install_time="1582809901640" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1583141407173" last="true" origin="installer" specification_version="1.0">
         <file crc="366440228" name="config/Modules/dk-sdu-mmmi-cbse-Common.xml"/>
-        <file crc="1775897132" name="modules/dk-sdu-mmmi-cbse-Common.jar"/>
-        <file crc="3764980079" name="modules/ext/dk.sdu.mmmi.cbse.Common/com-badlogicgames-gdx/gdx.jar"/>
-        <file crc="734498076" name="update_tracking/dk-sdu-mmmi-cbse-Common.xml"/>
+        <file crc="2137944109" name="modules/dk-sdu-mmmi-cbse-Common.jar"/>
     </module_version>
 </module>
