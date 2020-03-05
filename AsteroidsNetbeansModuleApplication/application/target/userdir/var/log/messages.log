@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
->Log Session: Thursday, March 5, 2020 at 8:58:05 AM Central European Standard Time
+>Log Session: Thursday, March 5, 2020 at 9:39:55 AM Central European Standard Time
 >System Info: 
   Product Version         = AsteroidsNetbeansModuleApplication incubator-netbeans-release-404-on-20190319
   Operating System        = Windows 10 version 10.0 running on amd64
@@ -38,15 +38,14 @@ INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
 	org.netbeans.core.startup/1 [1.66.1.1 incubator-netbeans-release-404-on-20190319]
 	org.netbeans.api.progress.nb [1.51.1 incubator-netbeans-release-404-on-20190319]
 	org.netbeans.modules.autoupdate.services [1.57.1 incubator-netbeans-release-404-on-20190319]
-	dk.sdu.mmmi.cbse.SilentUpdate [1.0 1.0-20200305 202003050740]
+	dk.sdu.mmmi.cbse.SilentUpdate [1.0 1.0-20200305 202003050816]
 	dk.sdu.mmmi.cbse.Common [1.0 1.0-20200305 202003050731]
 	dk.sdu.mmmi.cbse.Player [1.0 1.0-20200305 202003050732]
 	dk.sdu.mmmi.cbse.Enemy [1.0 1.0-20200305 202003050732]
-	dk.sdu.mmmi.cbse.Core [1.0 1.0-20200305 202003050732]
+	dk.sdu.mmmi.cbse.Core [1.0 1.0-20200305 202003050830]
 	dk.sdu.mmmi.cbse.CollisionHandler [1.0 1.0-20200305 202003050732]
 	dk.sdu.mmmi.cbse.Bullet [1.0 1.0-20200305 202003050732]
 	dk.sdu.mmmi.cbse.AsteroidsNetbeansModuleApplication.branding [1.0 1.0-20200305 202003050731]
 	dk.sdu.mmmi.cbse.Asteroid [1.0 1.0-20200305 202003050732]
 INFO [org.netbeans.modules.autoupdate.silentupdate]: None for update/install/uninstall
-INFO [null]: Last record repeated again.
 INFO [null]: Last record repeated again.
