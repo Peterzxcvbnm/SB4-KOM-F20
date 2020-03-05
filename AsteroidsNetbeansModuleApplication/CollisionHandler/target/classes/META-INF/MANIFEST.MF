@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 OpenIDE-Module-Localizing-Bundle: dk/sdu/mmmi/cbse/collisionhandler/Bu
  ndle.properties
 OpenIDE-Module-Specification-Version: 1.0
-OpenIDE-Module-Implementation-Version: 1.0-20200302
-OpenIDE-Module-Build-Version: 202003020929
+OpenIDE-Module-Implementation-Version: 1.0-20200305
+OpenIDE-Module-Build-Version: 202003050732
 OpenIDE-Module: dk.sdu.mmmi.cbse.CollisionHandler
 OpenIDE-Module-Public-Packages: dk.sdu.cbse.helloworld.*
 OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
