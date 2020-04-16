@@ -140,7 +140,6 @@ public class Game
     private final LookupListener lookupListener = new LookupListener() {
         @Override
         public void resultChanged(LookupEvent le) {
-            System.out.println("ResultChanged");
             Collection<? extends IGamePluginService> updated = result.allInstances();
 
             for (IGamePluginService us : updated) {
@@ -156,7 +155,6 @@ public class Game
                 if (!updated.contains(gs)) {
                     gs.stop(gameData, world);
                     gamePlugins.remove(gs);
-                    System.out.println("Module unloaded");
                 }
             }
         }

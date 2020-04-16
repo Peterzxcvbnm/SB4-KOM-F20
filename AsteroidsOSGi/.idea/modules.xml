@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Asteroid/Asteroid.iml" filepath="$PROJECT_DIR$/Asteroid/Asteroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AsteroidsOSGi.iml" filepath="$PROJECT_DIR$/AsteroidsOSGi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bullet/Bullet.iml" filepath="$PROJECT_DIR$/Bullet/Bullet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CollisionHandler/CollisionHandler.iml" filepath="$PROJECT_DIR$/CollisionHandler/CollisionHandler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Common/Common.iml" filepath="$PROJECT_DIR$/Common/Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Enemy/Enemy.iml" filepath="$PROJECT_DIR$/Enemy/Enemy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OSGiCore/OSGiCore.iml" filepath="$PROJECT_DIR$/OSGiCore/OSGiCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OSGiLibGDX/OSGiLibGDX.iml" filepath="$PROJECT_DIR$/OSGiLibGDX/OSGiLibGDX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Player/Player.iml" filepath="$PROJECT_DIR$/Player/Player.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poms/compiled/compiled-bundle-settings.iml" filepath="$PROJECT_DIR$/poms/compiled/compiled-bundle-settings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poms/libgdxwrapper/libgdxwrapper-bundle-settings.iml" filepath="$PROJECT_DIR$/poms/libgdxwrapper/libgdxwrapper-bundle-settings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provision/provision.iml" filepath="$PROJECT_DIR$/provision/provision.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poms/shared-plugin-settings.iml" filepath="$PROJECT_DIR$/poms/shared-plugin-settings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poms/wrappers/wrapper-bundle-settings.iml" filepath="$PROJECT_DIR$/poms/wrappers/wrapper-bundle-settings.iml" />
+    </modules>
+  </component>
+</project>
