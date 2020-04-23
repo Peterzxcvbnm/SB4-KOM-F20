@@ -12,7 +12,7 @@
         <module>Asteroid</module>
         <module>Bullet</module>
         <module>CollisionHandler</module>
-        <module>ObjectStorage</module>
+        <module>Common</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -37,6 +37,13 @@ class MovingPartTest {
     }
 
     @org.junit.jupiter.api.Test
+    void noMoveTest() {
+        movePart.process(gameData, entity);
+        assertEquals(100, posPart.getX());
+        assertEquals(100, posPart.getY());
+    }
+
+    @org.junit.jupiter.api.Test
     void rotateTest(){
         movePart.setLeft(true);
         movePart.process(gameData, entity);
